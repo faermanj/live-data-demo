@@ -38,7 +38,6 @@ public class TwitterToKinesis {
 				.build();
 		client.connect();
 		while (true) {
-
 			if (client.isDone()) {
 				System.out.println("Client connection closed unexpectedly: " +
 						client.getExitEvent().getMessage());
@@ -48,6 +47,7 @@ public class TwitterToKinesis {
 				if (msg == null) {
 					System.err.println("Did not receive a message in 5 seconds. Is something wrong?");
 				} else {
+					System.out.print(msg);
 					ingest(streamName, msg);
 				}
 			}
@@ -71,7 +71,7 @@ public class TwitterToKinesis {
 				err.printStackTrace();
 			else if (data != null) {
 				String sequenceNumber = resp.sequenceNumber();
-				System.out.println(String.format("Record [%s] ingested", sequenceNumber));
+				//System.out.println(String.format("Record [%s] ingested", sequenceNumber));
 			}
 		});
 	}
