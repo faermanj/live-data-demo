@@ -1,2 +1,2 @@
-# live-data-demo
+# live-data-demos
 Demos using live data
